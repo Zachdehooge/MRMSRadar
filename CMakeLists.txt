@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 4.0)
 project(MRMSRadar)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 26)
 
-add_executable(MRMSRadar
-        main.cpp)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
+add_subdirectory(SDL EXCLUDE_FROM_ALL)
 
+add_executable(MRMSRadar WIN32 main.cpp)
+
+target_link_libraries(MRMSRadar PRIVATE SDL3::SDL3)
