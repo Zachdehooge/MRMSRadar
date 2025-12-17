@@ -31,13 +31,13 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 {
     const char *message = "Hello World!";
     int w = 0, h = 0;
-    float x, y;
-    const float scale = 4.0f;
+    float y;
+    constexpr float scale = 4.0f;
 
     /* Center the message and scale it up */
     SDL_GetRenderOutputSize(renderer, &w, &h);
     SDL_SetRenderScale(renderer, scale, scale);
-    x = ((w / scale) - SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE * SDL_strlen(message)) / 2;
+    float x = ((w / scale) - SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE * SDL_strlen(message)) / 2;
     y = ((h / scale) - SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE) / 2;
 
     /* Draw the message */
